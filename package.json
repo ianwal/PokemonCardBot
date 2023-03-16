@@ -1,0 +1,19 @@
+{
+  "name": "pokemoncardbot",
+  "version": "1.0.0",
+  "description": "Pokemon card discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tommypak/PokemonCardBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tommypak/PokemonCardBot/issues"
+  },
+  "homepage": "https://github.com/tommypak/PokemonCardBot#readme"
+}
