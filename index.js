@@ -2,6 +2,7 @@ const {Client, Collection, Events, GatewayIntentBits} = require('discord.js');
 const {token} = require('./config.json');
 const fs = require('node:fs');
 const path = require('node:path');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates]
@@ -31,6 +32,22 @@ client.on(Events.InteractionCreate, async interaction => {
 
     const command = client.commands.get(interaction.commandName);
     if(!command) return;
+
+	// if (interaction.commandName === 'randomcard') {
+	// 	const row = new ActionRowBuilder()
+	// 		.addComponents(
+	// 			new ButtonBuilder()
+	// 				.setCustomId('secondary')
+	// 				.setLabel('Previous Card')
+	// 				.setStyle(ButtonStyle.Secondary),                ADDS BUTTON TO RANDOMCARD COMMAND
+    //             new ButtonBuilder()
+	// 				.setCustomId('primary')
+	// 				.setLabel('Next Card')
+	// 				.setStyle(ButtonStyle.Primary),
+	// 		);
+            
+	// 	await interaction.reply({ components: [row] });
+	// }
 
     try {   
         await command.execute(interaction);
