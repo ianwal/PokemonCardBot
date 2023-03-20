@@ -1,4 +1,4 @@
-const {Client, Collection, Events, GatewayIntentBits} = require('discord.js');
+const {Client, Collection, Events, GatewayIntentBits, Message} = require('discord.js');
 const {token} = require('./config.json');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -32,29 +32,29 @@ client.on(Events.InteractionCreate, async interaction => {
     const command = client.commands.get(interaction.commandName);
     if(!command) return;
 
-	if (interaction.commandName === 'randomcard') {
-        const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-		const row = new ActionRowBuilder()
-			.addComponents(
-				new ButtonBuilder()
-					.setCustomId('secondary')
-					.setLabel('Previous Card')
-					.setStyle(ButtonStyle.Secondary),                
-                new ButtonBuilder()
-					.setCustomId('primary')
-					.setLabel('Next Card')
-					.setStyle(ButtonStyle.Primary),
-			);
+	// if (interaction.commandName === 'randomcard') {
+    //     const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+	// 	const row = new ActionRowBuilder()
+	// 		.addComponents(
+	// 			new ButtonBuilder()
+	// 				.setCustomId('secondary')
+	// 				.setLabel('Previous Card')
+	// 				.setStyle(ButtonStyle.Secondary),                
+    //             new ButtonBuilder()
+	// 				.setCustomId('primary')
+	// 				.setLabel('Next Card')
+	// 				.setStyle(ButtonStyle.Primary),
+	// 		);
             
-		interaction.channel.send({ components: [row] });
+	// 	interaction.channel.send({ components: [row] });
 
-    const collector = interaction.channel.createMessageComponentCollector();
+    // const collector = interaction.channel.createMessageComponentCollector();
 
-    collector.on('collect', async i => {
-        await i.update({ components: [row] });
-    });
+    // collector.on('collect', async i => {
+    //     await i.update({ components: [row] });
+    // });
 
-    }
+    // }
 
     try {   
         await command.execute(interaction);
