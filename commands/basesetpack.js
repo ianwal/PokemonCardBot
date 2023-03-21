@@ -88,7 +88,7 @@ module.exports = {
     return;
     
     } else {
-        await interaction.reply({content:"You can't use this command right now!", ephemeral: true}); // tells user they can't use the command while someone else is using it.
+        await interaction.reply({content:"You can't use this command right now! Please wait for the current user to finish.", ephemeral: true}); // tells user they can't use the command while someone else is using it.
     }
     }
 }
