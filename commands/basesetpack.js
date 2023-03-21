@@ -7,6 +7,7 @@ const {Client, Collection, Events, GatewayIntentBits} = require('discord.js');
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMembers]
 });
+let lock = false; // only one instance of the command to be called at a time.
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,7 +15,8 @@ module.exports = {
         .setDescription('pulls a 10 random cards from base set1'),
     async execute(interaction) {
 
-    if (interaction.commandName === 'basesetpack') {
+    if (interaction.commandName === 'basesetpack' && lock == false)  {
+        lock = true; 
 		const row = new ActionRowBuilder()
             .addComponents(
                     new ButtonBuilder()
@@ -62,29 +64,32 @@ module.exports = {
     onlyRare = onlyRare.filter((element, index) => rareAndHolos.includes(index)); // Array with only Rares /RareHolos 
 
     let counter = 1;
-    collector.on('collect', async i => { // on button press -> new card
-    if (interaction.user.id === i.user.id) {   
-        if (counter >= 9) {                                         // 9 clicks till button is disabled (1 initial card + 9 more cards for a pack)
-            newValue = Math.floor(Math.random() * (onlyRare.length));
-            await interaction.editReply(onlyRare[newValue].images.large);
-            row.components[0].setDisabled(true);
-            await i.update({content: ' ', components: [row] });
-            collector.stop()
+    collector.on('collect', async i => { // on button press -> new card 
+        if (interaction.user.id === i.user.id) {   
+            if (counter >= 9) {                                         // 9 clicks till button is disabled (1 initial card + 9 more cards for a pack)
+                newValue = Math.floor(Math.random() * (onlyRare.length));
+                await interaction.editReply(onlyRare[newValue].images.large);
+                row.components[0].setDisabled(true);
+                await i.update({content: ' ', components: [row] });
+                collector.stop()
+                lock = false;
+            } else {
+                newValue = Math.floor(Math.random() * (onlyCommonUncommon.length));
+                await interaction.editReply(onlyCommonUncommon[newValue].images.large);
+                allCardsCopy.splice(newValue, 1);
+                counter++;
+                await i.update({content: ' ', components: [row] });
+            }
         } else {
-            newValue = Math.floor(Math.random() * (onlyCommonUncommon.length));
-            await interaction.editReply(onlyCommonUncommon[newValue].images.large);
-            allCardsCopy.splice(newValue, 1);
-            counter++;
-            await i.update({content: ' ', components: [row] });
-        }
-    } else {
-        await i.reply({content:"You can't use this button!", ephemeral: true});
-    }
-    });   
+            await i.reply({content:"You can't use this button!", ephemeral: true});
+        }  
+    });
     
     return;
     
-    }   
+    } else {
+        await interaction.reply({content:"You can't use this command right now!", ephemeral: true}); // tells user they can't use the command while someone else is using it.
+    }
     }
 }
 
