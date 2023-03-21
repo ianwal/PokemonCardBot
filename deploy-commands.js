@@ -19,8 +19,8 @@ const rest = new REST({version: '10'}).setToken(token);
 	try {
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 		const data = await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
-            //Routes.applicationCommands(clientId),
+			// Routes.applicationGuildCommands(clientId, guildId), // uncomment this when testing, comment to deploy globally
+            Routes.applicationCommands(clientId),                  // comment this when testing, uncomment to deploy globally
 			{body: commands},
 		);
 
