@@ -76,7 +76,7 @@ module.exports = {
             } else {
                 newValue = Math.floor(Math.random() * (onlyCommonUncommon.length));
                 await interaction.editReply(onlyCommonUncommon[newValue].images.large);
-                allCardsCopy.splice(newValue, 1);
+                onlyCommonUncommon.splice(newValue, 1);
                 counter++;
                 await i.update({content: ' ', components: [row] });
             }
