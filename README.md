@@ -14,7 +14,7 @@ Discord bot that simulates opening a Pokemon card pack
 npm ci
 ```
 
-3. Create `config.json` in this directory and add your Discord bot keys from their developer portal
+3. Create `config.json` in this directory and add your Discord bot keys from your developer portal
 
 `config.json`
 ```json
@@ -32,10 +32,7 @@ node index.js
 
 5. Invite the bot to your server. It requires applications.commands permission.
 
-Note:
-- It may take up to an hour for slash commands to show up. This is a limitation of Discord.
-
-</br>
+Note: It may take up to an hour for slash commands to show up. This is a limitation of Discord.
 
 # Development
 
