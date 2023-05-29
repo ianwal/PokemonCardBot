@@ -1,9 +1,9 @@
-# PokemonCardBot
-Discord bot that simulates opening a Pokemon card pack.
+<div align="center">
+	<video src="https://github.com/ianwal/PokemonCardBot/assets/52143079/d8558656-3420-496c-aed5-83862dd3210a"/>
+</div>
 
 
-
-</br>
+Discord bot that simulates opening a Pokemon card pack
 
 # Installation
 
@@ -19,7 +19,7 @@ npm ci
 `config.json`
 ```json
 {
-	"token": "<your bot token>",
+    "token": "<your bot token>",
     "clientId": "<your bot application ID>"
 }
 ```
@@ -48,7 +48,7 @@ Add the ID of your guild to config.json. To find this, right click your Discord 
 `config.json`
 ```json
 {
-	"token": "<your bot token>",
+    "token": "<your bot token>",
     "clientId": "<your bot application ID>",
     "guildId": "<your guild ID>"
 }
