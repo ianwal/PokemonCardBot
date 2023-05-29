@@ -38,7 +38,7 @@ Note: It may take up to an hour for slash commands to show up. This is a limitat
 
 When changing commands, it may be useful to reduce the time it takes for them to show up on Discord.
 
-To reduce this time, you can specify a single guild (discord server) where you want to test the bot.
+To reduce this time, you can specify a single guild (Discord server) where you want to test the bot.
 
 Add the ID of your guild to config.json. To find this, right click your Discord server and click `Copy Server ID`.
 
