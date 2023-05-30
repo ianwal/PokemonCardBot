@@ -1,21 +1,21 @@
 {
   "name": "pokemoncardbot",
   "version": "1.0.0",
-  "description": "Pokemon card discord bot",
+  "description": "Discord Bot that simulates opening a Pokemon card pack",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tommypak/PokemonCardBot.git"
+    "url": "git+https://github.com/lanechilders/PokemonCardBot.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tommypak/PokemonCardBot/issues"
+    "url": "https://github.com/lanechilders/PokemonCardBot/issues"
   },
-  "homepage": "https://github.com/tommypak/PokemonCardBot#readme",
+  "homepage": "https://github.com/lanechilders/PokemonCardBot#readme",
   "dependencies": {
     "@discordjs/builders": "^1.5.0",
     "discord.js": "^14.8.0"

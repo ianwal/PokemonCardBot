@@ -1,6 +1,6 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
 const fs = require('node:fs');
-const obj = JSON.parse(fs.readFileSync('./baseset1.json'));
+const obj = JSON.parse(fs.readFileSync('./cards/baseset1.json'));
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ButtonInteraction, Message } = require('discord.js');
 const {Client, Collection, Events, GatewayIntentBits} = require('discord.js');
 
