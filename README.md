@@ -24,15 +24,22 @@ npm ci
 }
 ```
 
-4. Run the bot
+4. Deploy the slash commands to your server.
+
+```sh
+node deploy-commands.js
+```
+
+##### Note: It may take up to an hour for slash commands to show up. This is a limitation of Discord.
+
+5. Run the bot
 
 ```sh
 node index.js
 ```
 
-5. Invite the bot to your server. It requires applications.commands permission.
+6. Invite the bot to your server. It requires applications.commands permission.
 
-Note: It may take up to an hour for slash commands to show up. This is a limitation of Discord.
 
 # Development
 
@@ -42,26 +49,19 @@ To reduce this time, you can specify a single guild (Discord server) where you w
 
 Add the ID of your guild to config.json. To find this, right click your Discord server and click `Copy Server ID`.
 
+Also add the key `globalDeploy` and set it to `false`.
+
 `config.json`
 ```json
 {
     "token": "<your bot token>",
     "clientId": "<your bot application ID>",
-    "guildId": "<your guild ID>"
+    "guildId": "<your guild ID>",
+    "globalDeploy": false
 }
 ```
 
-And then in deploy-commands.js uncomment the top line in the guild commands request and comment the bottom line so it looks like the following:
-
-```js
-const data = await rest.put(
-    Routes.applicationGuildCommands(clientId, guildId),
-    //Routes.applicationCommands(clientId),
-    {body: commands},
-);
-```
-
-Now run deploy-commands again with `node deploy-commands.js` and it should deploy the commands to that one server quickly.
+Now deploy the slash commands again and it should update on that one server quickly.
 
 You can then modify and run the program normally.
 
