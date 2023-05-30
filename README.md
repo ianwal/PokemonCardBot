@@ -24,7 +24,7 @@ npm ci
 }
 ```
 
-4. Deploy the slash commands to your server.
+4. Deploy the slash commands to your server
 
 ```sh
 node deploy-commands.js
@@ -46,6 +46,8 @@ node index.js
 When changing commands, it may be useful to reduce the time it takes for them to show up on Discord.
 
 To reduce this time, you can specify a single guild (Discord server) where you want to test the bot.
+
+### Steps:
 
 Add the ID of your guild to config.json. To find this, right click your Discord server and click `Copy Server ID`.
 
